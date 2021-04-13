@@ -130,15 +130,9 @@ namespace HotelApp
             return dt;
         }
 
-        SelectedRooms sr = new SelectedRooms();
-
 
         private void btn_kanan_Click(object sender, RoutedEventArgs e)
         {
-
-            var test = dg_ListAvalaibleRooms.SelectedCells;
-            sr.DT.Rows.Add(test);
-            dg_Selected_Rooms.ItemsSource = sr.DT.DefaultView;
 
         }
     }

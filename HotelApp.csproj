@@ -64,7 +64,6 @@
     <Compile Include="ReservationControl.xaml.cs">
       <DependentUpon>ReservationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectedRooms.cs" />
     <Page Include="Beranda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
