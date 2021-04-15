@@ -3,7 +3,7 @@
 K-Hotel is a business app for hotel. This app has 4 account type for now. There is Admin, Front Office, HouseKeeping Supervisor, HouseKeeping,Each account has different feature. This app was inspired by LKS(Lomba Kompetensi Siswa). this app is works for windows and android only.
 
 <div> 
-<h2 align="center"> UI SHOW CASE</h2>
+<h2 align="center"> UI Showcase</h2>
   For more detail about UI You can watch the video <a href="https://www.youtube.com/channel/UCEAgEldYBVGBYuzQLBi25uw">here🖐</a>
   
   <p align="center"> LOGIN <br> <br>
