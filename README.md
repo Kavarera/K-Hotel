@@ -4,6 +4,8 @@ K-Hotel is a business app for hotel. This app has 4 account type for now. There 
 
 <div> 
 <h2 align="center"> UI SHOW CASE</h2>
+  For more detail about UI You can watch the video [here🖐](https://www.youtube.com/channel/UCEAgEldYBVGBYuzQLBi25uw)
+  
   <p align="center"> LOGIN <br> <br>
   <img  src="https://github.com/Kavarera/K-Hotel/blob/master/Login1.png">
   <img  src="https://github.com/Kavarera/K-Hotel/blob/master/Login1_failed.png">
