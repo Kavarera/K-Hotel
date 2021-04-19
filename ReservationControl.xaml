@@ -5,22 +5,177 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HotelApp"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="800"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
     <Grid>
+        <Grid x:Name="AddRoom_grid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button x:Name="btn_addRoom" Content="Add Room" Padding="15,0,15,0" 
+                    Background="Transparent" Foreground="White"
+                    BorderThickness="0.4" 
+                    Cursor="Hand"/>
+                <Button x:Name="btn_addItem" Content="Add Item" Margin="5,0,0,0" Padding="15,0,15,0" 
+                    Background="Transparent" Foreground="White"
+                    BorderThickness="0.4" 
+                    Cursor="Hand"/>
+            </StackPanel>
+
+            <Grid x:Name="addRoom_grid" Grid.Row="1" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--ATAS - ADD ROOM-->
+
+                <Grid Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Customer Info-->
+                    <Canvas Grid.Column="0">
+                        <Label Content="Name" Foreground="White"/>
+
+                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="8"/>
+
+                        <Label Content="NIK" Foreground="White" Canvas.Top="35"/>
+
+                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="37"/>
+
+                        <Label Content="Phone" Foreground="White" Canvas.Top="67"/>
+
+                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="68"/>
+
+                        <Label Content="Email" Foreground="White" Canvas.Top="95" />
+
+                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="97"/>
+
+                        <Label Content="Gender" Foreground="White" Canvas.Left="245" />
+
+                        <ComboBox Name="cb_Gender" BorderThickness="0" Width="50" Height="18" Canvas.Left="319" Canvas.Top="4">
+                            <ComboBoxItem Content="Female"/>
+                            <ComboBoxItem Content="Male"/>
+                        </ComboBox>
+
+
+                    </Canvas>
+
+
+                    <!--Room info-->
+                    <Canvas Grid.Column="1">
+
+                        <Label Content="Start Date" Foreground="White"/>
+                        <DatePicker x:Name="StartDate" Width="135" Canvas.Left="91"
+                                SelectedDate="{x:Static sys:DateTime.Now}"
+                                />
+
+                        <Label Content="Nights" Foreground="White" Canvas.Top="47"/>
+                        <TextBox x:Name="tb_nights"
+                                 Width="40" BorderThickness="0" Height="18" Canvas.Left="91" Canvas.Top="51"/>
+
+                        <Label Content="Room Type" Foreground="White" Canvas.Top="95"/>
+                        <ComboBox Name="cb_roomtype" Width="180" Canvas.Left="91" Canvas.Top="95" BorderThickness="0"/>
+
+
+
+
+                    </Canvas>
+
+
+                </Grid>
+
+
+                <!--BAWAH - ADD ROOM-->
+
+                <Grid Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                                  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"  GridLinesVisibility="None"
+                                  Height="250" VerticalAlignment="Top" Margin="0,40,0,0"/>
+                    </Grid>
+
+                    <Canvas Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
+
+                        <Label Content="Room Number" Foreground="White"/>
+                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="10" BorderThickness="0"/>
+
+                        <Label Content="Room Floors" Foreground="White" Canvas.Top="50"/>
+                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="52" BorderThickness="0"/>
+
+
+                        <Label Content="Room Type" Foreground="White" Canvas.Top="85"/>
+                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="95" BorderThickness="0"/>
+
+
+                    </Canvas>
+
+
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--#region set awal-->
+
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="Transparent">
             <Grid x:Name="optionAtas" Grid.Row="1">
-                <!--#region Reservasi Kiri atas-->
+                -->
+    <!--#region Reservasi Kiri atas-->
+    <!--
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--#region LABEL-->
+                    -->
+    <!--#region LABEL-->
+    <!--
                     <Grid x:Name="LabelKiri" Grid.Column="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -36,7 +191,9 @@
                                FontSize="18px" HorizontalContentAlignment="Right"
                                Grid.Row="2" />
                     </Grid>
-                    <!--#endregion-->
+                    -->
+    <!--#endregion-->
+    <!--
 
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -44,7 +201,9 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <!--Date Picker-->
+                        -->
+    <!--Date Picker-->
+    <!--
                         <DatePicker Name="dp_StartDate" Grid.Row="1" Margin="0,15,0,0" Foreground="Black" 
                                     Width="300" BorderThickness="0" HorizontalAlignment="Left"/>
                         <Label Grid.Row="1" Content="Number Of Nights" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -97,7 +256,9 @@
                         </Button>
                     </Grid>
                 </Grid>
-                <!--#endregion-->
+                -->
+    <!--#endregion-->
+    <!--
             </Grid>
         </Grid>
 
@@ -108,7 +269,9 @@
                 <RowDefinition Height="60" MaxHeight="65"/>
             </Grid.RowDefinitions>
 
-            <!--GRID BAGIAN BAWAH, ATAS-->
+            -->
+    <!--GRID BAGIAN BAWAH, ATAS-->
+    <!--
 
             <Grid Grid.Row="0" Margin="0,0,0,180.333" Grid.RowSpan="2">
 
@@ -156,7 +319,9 @@
 
             </Grid>
 
-            <!--GRID BAGIAN BAWAH, BAWAH-->
+            -->
+    <!--GRID BAGIAN BAWAH, BAWAH-->
+    <!--
 
             <Grid Grid.Row="1" Margin="0,0.333">
 
@@ -223,7 +388,9 @@
                                     <ColumnDefinition Width="50"/>
                                 </Grid.ColumnDefinitions>
 
-                                <!--quantity & Items -->
+                                -->
+    <!--quantity & Items -->
+    <!--
 
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -235,7 +402,9 @@
 
                                     <ComboBox Name="cb_RequestAdditionalItems" Width="170" Height="15" HorizontalAlignment="Center" BorderThickness="0"/>
 
-                                    <!--ROW KE 2-->
+                                    -->
+    <!--ROW KE 2-->
+    <!--
 
                                     <Label Content="Quantity" HorizontalAlignment="Left" Grid.Row="1" Foreground="White" FontWeight="Bold"/>
 
@@ -248,7 +417,9 @@
                                 </Grid>
 
 
-                                <!--button add-->
+                                -->
+    <!--button add-->
+    <!--
 
                                 <Button Content="Add" Grid.Column="1" Foreground="White"
                                         Height="20" VerticalAlignment="Bottom" BorderThickness="0"
@@ -267,7 +438,9 @@
             </Grid>
 
 
-            <!--Submit Part-->
+            -->
+    <!--Submit Part-->
+    <!--
             <Label Content="Total Price"  Grid.Row="2" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Margin="0,0,10,0"
                    Foreground="White" FontWeight="Bold"/>
             <Button x:Name="btn_SubmitReservation" Content="Submit" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" Width="45"
@@ -306,5 +479,8 @@
             </Button>
 
         </Grid>
-    </Grid>
+    </Grid>-->
+
+    <!--#endregion-->
+
 </UserControl>
