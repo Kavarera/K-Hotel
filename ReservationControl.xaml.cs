@@ -24,14 +24,11 @@ namespace HotelApp
     /// </summary>
     public partial class ReservationControl : UserControl
     {
-        
+        SqlConnection con = new SqlConnection(Helper.conval("thedb"));
         public ReservationControl()
         {
 
             InitializeComponent();
-
-
-            StartDate.
 
 
             #region cadangan
@@ -45,9 +42,44 @@ namespace HotelApp
             #endregion
         }
 
+        private void ReservationPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            lbl_EmployeeInfo_Name.Content = Employee.Nama.ToString();
+            lbl_EmployeeInfo_Id.Content = Employee.ids.ToString();
+            cb_LoadRoomType();
+
+        }
 
 
+        private void cb_LoadRoomType()
+        {
+            con.Open();
+            SqlDataReader sdr= new SqlCommand("SELECT Nama , Id FROM RoomType", con).ExecuteReader();
+            while (sdr.Read())
+            {
+                cb_roomtype.Items.Add(sdr["Nama"].ToString());
+            }
+            sdr.Close();
+            con.Close();
+        }
 
+        private void cb_roomtype_Selected(object sender, RoutedEventArgs e)
+        {
+            LoadRoomType();
+        }
+
+        private void LoadRoomType()
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand($"SELECT RoomNumber ,  RoomFloor , Description FROM Room WHERE Status = 'Empty' AND RoomType = {cb_roomtype.SelectedItem.ToString()}", con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable("ExistRoom");
+            sda.Fill(dt);
+            con.Close();
+            dg_AddRoom.ItemsSource = dt.DefaultView;
+        }
 
 
 

@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:HotelApp"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="800"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" Loaded="ReservationPanel_Loaded">
 
     <Grid>
-        <Grid x:Name="AddRoom_grid">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
@@ -26,6 +26,9 @@
                     Cursor="Hand"/>
             </StackPanel>
 
+           
+            
+            
             <Grid x:Name="addRoom_grid" Grid.Row="1" >
 
                 <Grid.RowDefinitions>
@@ -61,7 +64,7 @@
                         <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="97"/>
 
                         <Label Content="Gender" Foreground="White" Canvas.Left="245" />
-
+                        
                         <ComboBox Name="cb_Gender" BorderThickness="0" Width="50" Height="18" Canvas.Left="319" Canvas.Top="4">
                             <ComboBoxItem Content="Female"/>
                             <ComboBoxItem Content="Male"/>
@@ -72,7 +75,7 @@
 
 
                     <!--Room info-->
-                    <Canvas Grid.Column="1">
+                    <Canvas Grid.Column="1" Height="120" VerticalAlignment="Top">
 
                         <Label Content="Start Date" Foreground="White"/>
                         <DatePicker x:Name="StartDate" Width="135" Canvas.Left="91"
@@ -84,9 +87,7 @@
                                  Width="40" BorderThickness="0" Height="18" Canvas.Left="91" Canvas.Top="51"/>
 
                         <Label Content="Room Type" Foreground="White" Canvas.Top="95"/>
-                        <ComboBox Name="cb_roomtype" Width="180" Canvas.Left="91" Canvas.Top="95" BorderThickness="0"/>
-
-
+                        <ComboBox Name="cb_roomtype" Width="180" Canvas.Left="91" Canvas.Top="95" BorderThickness="0" Selected="cb_roomtype_Selected" />
 
 
                     </Canvas>
@@ -109,24 +110,74 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Column="0" Grid.Row="0">
-                        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                        <DataGrid x:Name="dg_AddRoom" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
                                   IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"  GridLinesVisibility="None"
-                                  Height="250" VerticalAlignment="Top" Margin="0,40,0,0"/>
+                                  Height="250" VerticalAlignment="Top" Margin="0,40,0,0" />
                     </Grid>
 
                     <Canvas Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
 
                         <Label Content="Room Number" Foreground="White"/>
-                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="10" BorderThickness="0"/>
+                        <TextBox x:Name="tb_RoomNumber_AddRoom" IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="10" BorderThickness="0"/>
 
                         <Label Content="Room Floors" Foreground="White" Canvas.Top="50"/>
-                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="52" BorderThickness="0"/>
+                        <TextBox x:Name="tb_RoomFloors_AddRoom" IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="52" BorderThickness="0"/>
 
 
                         <Label Content="Room Type" Foreground="White" Canvas.Top="85"/>
-                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="95" BorderThickness="0"/>
+                        <TextBox x:Name="tb_RoomType_AddRoom" IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="95" BorderThickness="0"/>
 
 
+                    </Canvas>
+                    <Canvas Grid.Column="1" Grid.Row="0">
+
+                        <Label Content="Employee Info" Foreground="White" Canvas.Right="1" />
+
+                        <Label Name="lbl_EmployeeInfo_Name" Content="Name" Foreground="White" Canvas.Top="40" FontSize="25" Margin="10,0,0,0"/>
+
+                        <Label Name="lbl_EmployeeInfo_Id" Content="Id" Foreground="White" Canvas.Top="85" FontSize="25" Margin="10,0,0,0"/>
+
+
+
+                    </Canvas>
+
+                    <Canvas Grid.Column="1" Grid.Row="1">
+
+
+                        <Label Content="Total Price : Rp " Foreground="White" Canvas.Top="60" FontSize="20"/>
+                        <Label Content="999999" Foreground="White" Canvas.Top="60" Canvas.Left="145" FontSize="20"/>
+
+
+                        <Label Content="Code" Foreground="White" Canvas.Top="123" FontSize="20"/>
+                        <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="135" BorderThickness="0"/>
+
+                        <Button Canvas.Bottom="20" Canvas.Right="10" Content="Submit"
+                                x:Name="btn_SubmitAddRoom" Background="Green" Foreground="White" Width="55" Height="20">
+
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border x:Name="border" BorderThickness="0" Background="{TemplateBinding Background}"
+                                                    SnapsToDevicePixels="True"
+                                                    CornerRadius="3">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="LightBlue"/>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Resources>
+
+
+                        </Button>
                     </Canvas>
 
 
@@ -134,6 +185,9 @@
 
 
             </Grid>
+            
+            
+            
         </Grid>
     </Grid>
 

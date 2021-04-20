@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace HotelApp
 { 
-    public class Employee
+    public static class Employee
     {
-        private string nama,jobname;
-        public string Username { get; set; }
-        public string Sandi{get;set;}
-        public string Nama{
+        private static string nama = "";
+        private static string jobname = "";
+        public static string ids { get; set; }
+        public static string Username { get; set; }
+        public static string Sandi{get;set;}
+        public static string Nama{
             get { return nama; }
             set { nama = value; }
         }
-        public string JobName{
+
+
+
+        public static string JobName{
             get { return jobname; }
             set { switch (value) {
                     case "1":

@@ -41,8 +41,8 @@ namespace HotelApp
 
 
 
-            lbl_username.Content = mw.karyawan.Nama;
-            lbl_JobName.Content = mw.karyawan.JobName;
+            lbl_username.Content = Employee.Nama;
+            lbl_JobName.Content = Employee.JobName;
             var Converter = new System.Windows.Media.BrushConverter();
 
 

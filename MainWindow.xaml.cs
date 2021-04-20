@@ -64,25 +64,28 @@ namespace HotelApp
                 pb_box.Clear();
             }
         }
-        public Employee karyawan = new Employee();
+        
+        //public Employee karyawan = new Employee();
+        
         private async void btn_login_Click(object sender, RoutedEventArgs e)
         {
             
             SqlConnection con = new SqlConnection(Helper.conval("thedb"));
-            SqlCommand cmd = new SqlCommand($"SELECT Sandi , Nama , JobID , Username FROM Employee WHERE Username = '{tb_username.Text}'",con);
+            SqlCommand cmd = new SqlCommand($"SELECT Sandi, ID , Nama , JobID , Username FROM Employee WHERE Username = '{tb_username.Text}'",con);
             try
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                   karyawan.Nama = sdr["Nama"].ToString();
-                   karyawan.Sandi = sdr["Sandi"].ToString();
-                   karyawan.JobName = sdr["JobID"].ToString();
-                   karyawan.Username = sdr["Username"].ToString();
+                   Employee.Nama = sdr["Nama"].ToString();
+                   Employee.Sandi = sdr["Sandi"].ToString();
+                   Employee.JobName = sdr["JobID"].ToString();
+                   Employee.Username = sdr["Username"].ToString();
+                    Employee.ids = sdr["ID"].ToString();
                 }
 
-                if (karyawan.Sandi== MySHA256ENC.SHA256Enc.Get_Enc(pb_box.Password) && karyawan.Username == tb_username.Text)
+                if (Employee.Sandi== MySHA256ENC.SHA256Enc.Get_Enc(pb_box.Password) && Employee.Username == tb_username.Text)
                 {
                     con.Close();
 
