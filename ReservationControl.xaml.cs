@@ -46,11 +46,14 @@ namespace HotelApp
         {
 
             lbl_EmployeeInfo_Name.Content = Employee.Nama.ToString();
-            lbl_EmployeeInfo_Id.Content = Employee.ids.ToString();
             cb_LoadRoomType();
 
         }
 
+        public void cb_ClearRoomType()
+        {
+            cb_roomtype.Items.Clear();
+        }
 
         private void cb_LoadRoomType()
         {
@@ -71,14 +74,25 @@ namespace HotelApp
 
         private void LoadRoomType()
         {
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"SELECT RoomNumber ,  RoomFloor , Description FROM Room WHERE Status = 'Empty' AND RoomType = {cb_roomtype.SelectedItem.ToString()}", con);
+            SqlCommand cmd = new SqlCommand($"SELECT  RoomNumber ,  RoomFloor , Description FROM Room WHERE Status = 'Empty' AND RoomType = {RoomLoader.getID(con,"RoomType",cb_roomtype.SelectedItem.ToString())}", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            con.Open();
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable("ExistRoom");
             sda.Fill(dt);
             con.Close();
-            dg_AddRoom.ItemsSource = dt.DefaultView;
+            dg_AddRoom.ItemsSource= dt.DefaultView;
+        }
+
+        private void btn_search_Click(object sender, RoutedEventArgs e)
+        {
+            LoadRoomType();
+        }
+
+        private void dg_AddRoom_CurrentCellChanged(object sender, EventArgs e)
+        {
+           
+
         }
 
 

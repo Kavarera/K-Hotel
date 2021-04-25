@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:HotelApp"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="800"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib" Loaded="ReservationPanel_Loaded">
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" Loaded="ReservationPanel_Loaded"
+             Margin="10,0,0,0">
 
     <Grid>
         <Grid>
@@ -41,56 +42,85 @@
                 <Grid Grid.Row="0">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Customer Info-->
-                    <Canvas Grid.Column="0">
-                        <Label Content="Name" Foreground="White"/>
+                    <Grid Grid.Column="0" >
+                        <Label Content="Name" Foreground="White" Width="45" Height="25"
+                               VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0"/>
 
-                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="8"/>
+                        <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                 Margin="80,10,0,0"/>
 
-                        <Label Content="NIK" Foreground="White" Canvas.Top="35"/>
+                        <Label Content="NIK" Foreground="White" Width="35" Height="25"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Margin="0,35,0,0"/>
 
-                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="37"/>
+                        <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                 Margin="80,38,0,0"/>
 
-                        <Label Content="Phone" Foreground="White" Canvas.Top="67"/>
+                        <Label Content="Phone" Foreground="White" Width="45" Height="25"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Margin="0,60,0,0"/>
 
-                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="68"/>
+                        <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                 Margin="80,65,0,0"/>
 
-                        <Label Content="Email" Foreground="White" Canvas.Top="95" />
 
-                        <TextBox Width="157" Height="18" Canvas.Left="67" Canvas.Top="97"/>
+                        <Label Content="Email" Foreground="White" Width="45" Height="25"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Margin="0,85,0,0"/>
 
-                        <Label Content="Gender" Foreground="White" Canvas.Left="245" />
-                        
-                        <ComboBox Name="cb_Gender" BorderThickness="0" Width="50" Height="18" Canvas.Left="319" Canvas.Top="4">
+                        <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                 Margin="80,90,0,0"/>
+
+                        <Label Content="Gender" Foreground="White" Width="50" Height="25"
+                               VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Margin="250,5,0,0"/>
+
+                        <ComboBox Name="cb_Gender" BorderThickness="0" Width="50" Height="18"
+                                  VerticalAlignment="Top" HorizontalAlignment="Left"
+                                  Margin="320,8,0,0">
                             <ComboBoxItem Content="Female"/>
                             <ComboBoxItem Content="Male"/>
                         </ComboBox>
 
 
-                    </Canvas>
+
+                    </Grid>
 
 
                     <!--Room info-->
-                    <Canvas Grid.Column="1" Height="120" VerticalAlignment="Top">
+                    
+                    <Grid Grid.Column="1" Height="120" VerticalAlignment="Top">
 
-                        <Label Content="Start Date" Foreground="White"/>
-                        <DatePicker x:Name="StartDate" Width="135" Canvas.Left="91"
+                        <Label Content="Start Date" Margin="0,3,0,0" Width="63" Foreground="White" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        <DatePicker x:Name="StartDate" Width="100" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                    Margin="80,5,0,0"
                                 SelectedDate="{x:Static sys:DateTime.Now}"
-                                />
+                                 />
 
-                        <Label Content="Nights" Foreground="White" Canvas.Top="47"/>
+                        <Label Content="Nights" Foreground="White" Width="46" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Margin="0,35,0,0"/>
                         <TextBox x:Name="tb_nights"
-                                 Width="40" BorderThickness="0" Height="18" Canvas.Left="91" Canvas.Top="51"/>
+                                 Width="40" BorderThickness="0" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                 Margin="80,40,0,0"/>
+                        
 
-                        <Label Content="Room Type" Foreground="White" Canvas.Top="95"/>
-                        <ComboBox Name="cb_roomtype" Width="180" Canvas.Left="91" Canvas.Top="95" BorderThickness="0" Selected="cb_roomtype_Selected" />
+                        <Label Content="Room Type" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"
+                               Margin="0,70,0,0" Width="70" Height="28"/>
+                        <ComboBox Name="cb_roomtype" Width="180"  BorderThickness="0" Height="20"
+                                  VerticalAlignment="Top" HorizontalAlignment="Left"
+                                  Margin="80,75,0,0"/>
+
+                        <Button x:Name="btn_search" Content="Search" Width="43" Height="23" BorderThickness="1" Background="LightBlue" BorderBrush="Aqua" 
+                                VerticalAlignment="Top" HorizontalAlignment="Left" Margin="290,70,0,0"
+                                Click="btn_search_Click"/>
 
 
-                    </Canvas>
+                    </Grid>
 
 
                 </Grid>
@@ -110,9 +140,10 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Column="0" Grid.Row="0">
-                        <DataGrid x:Name="dg_AddRoom" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
-                                  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"  GridLinesVisibility="None"
-                                  Height="250" VerticalAlignment="Top" Margin="0,40,0,0" />
+                        <DataGrid x:Name="dg_AddRoom"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                                  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"
+                                  Height="250" VerticalAlignment="Top" Margin="0,40,0,0"
+                                  CurrentCellChanged="dg_AddRoom_CurrentCellChanged" />
                     </Grid>
 
                     <Canvas Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
@@ -133,9 +164,7 @@
 
                         <Label Content="Employee Info" Foreground="White" Canvas.Right="1" />
 
-                        <Label Name="lbl_EmployeeInfo_Name" Content="Name" Foreground="White" Canvas.Top="40" FontSize="25" Margin="10,0,0,0"/>
-
-                        <Label Name="lbl_EmployeeInfo_Id" Content="Id" Foreground="White" Canvas.Top="85" FontSize="25" Margin="10,0,0,0"/>
+                        <Label Name="lbl_EmployeeInfo_Name" Content="Name" Foreground="White" Canvas.Top="40" FontSize="25" Canvas.Right="1"/>
 
 
 

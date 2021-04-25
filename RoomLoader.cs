@@ -12,43 +12,45 @@ namespace HotelApp
     {
         
 
-        public static string getID(SqlConnection con, string TableName, string Nama, string RoomType = "RoomType", int RoomID = 0)
+        public static int getID(SqlConnection con, string TableName, string Nama = null , string RoomType = "RoomType", int RoomID = 0)
         {
             
             con.Open();
 
-            if (RoomType == "Room")
+            if (TableName == "Room")
             {
 
-                SqlCommand cmd = new SqlCommand($"SELECT ID FROM {TableName} WHERE Nama = '{Nama}' Status = 'Empty'", con);
+                SqlCommand cmd = new SqlCommand($"SELECT ID FROM {TableName} WHERE  Status = 'Empty'", con);
                 var result = cmd.ExecuteScalar();
                 con.Close();
-                return result.ToString();
+                return int.Parse(result.ToString());
 
 
             }
 
-            else if (RoomType == "RoomType")
+            else if (TableName== "RoomType")
             {
 
                 SqlCommand cmd = new SqlCommand($"SELECT ID FROM {TableName} WHERE Nama = '{Nama}'", con);
                 var result = cmd.ExecuteScalar();
                 con.Close();
-                return result.ToString();
+                return int.Parse(result.ToString());
+
 
             }
 
-            else if(RoomType == "ReservationRoom")
+            else if(TableName == "ReservationRoom")
             {
                 SqlCommand cmd = new SqlCommand($"SELECT ID FROM {TableName} WHERE RoomID = '{RoomID}'", con);
                 var result = cmd.ExecuteScalar();
                 con.Close();
-                return result.ToString();
+                return int.Parse(result.ToString());
+
             }
 
             else
                 con.Close();
-                return "Error RoomLoader-1";
+                return 0101010;
 
         }
 

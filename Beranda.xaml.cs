@@ -167,8 +167,7 @@ namespace HotelApp
             Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(50, 200, TimeSpan.FromSeconds(1)));
             if (button1.Content.ToString()=="Reservation")
             {
-
-                RC.BeginAnimation(WidthProperty, new DoubleAnimation(RC.Width, BerandaWindow.Width - 200, TimeSpan.FromSeconds(1)));
+                
             }
 
 
@@ -180,8 +179,8 @@ namespace HotelApp
 
             if (button1.Content.ToString() == "Reservation")
             {
-
-                RC.BeginAnimation(WidthProperty, new DoubleAnimation(RC.Width, BerandaWindow.Width - 50, TimeSpan.FromSeconds(1)));
+                //RC.BeginAnimation(WidthProperty, new DoubleAnimation(RC.Width, BerandaWindow.Width - 50, TimeSpan.FromSeconds(1)));
+                
             }
 
 
@@ -204,12 +203,15 @@ namespace HotelApp
                 if(btn1)
                 {
                     MainPanel.Children.Remove(RC);
+                    RC.cb_ClearRoomType();
+                    //MainPanel.Children.Remove(RC);
                     btn1 = false;
                     
                 }
                 else
                 {
                     MainPanel.Children.Add(RC);
+                    //MainPanel.Children.Add(RC);
                     btn1 = true;
                 }
             }
