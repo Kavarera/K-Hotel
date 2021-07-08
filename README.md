@@ -24,10 +24,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 
-## Team
-[Instagram - Kavarera](https://www.instagram.com/r_kavarera) = Main Developer
-
-[Instagram - Danny](https://www.instagram.com/Paradx_design) = Login Template Maker
+## Developer
+[Instagram - Kavarera](https://www.instagram.com/r_kavarera)
 
 # Community
 [Discord](https://discord.gg/4qeyY9D6Sr)
