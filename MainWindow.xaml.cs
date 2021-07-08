@@ -69,7 +69,7 @@ namespace HotelApp
         
         private async void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            
+
             SqlConnection con = new SqlConnection(Helper.conval("thedb"));
             SqlCommand cmd = new SqlCommand($"SELECT Sandi, ID , Nama , JobID , Username FROM Employee WHERE Username = '{tb_username.Text}'",con);
             try
@@ -87,7 +87,6 @@ namespace HotelApp
 
                 if (Employee.Sandi== MySHA256ENC.SHA256Enc.Get_Enc(pb_box.Password) && Employee.Username == tb_username.Text)
                 {
-                    con.Close();
 
                     this.Dispatcher.Invoke(() => LoginWindow.BeginAnimation(HeightProperty, new DoubleAnimation(450, 0, TimeSpan.FromSeconds(0.5))));
 
@@ -104,6 +103,7 @@ namespace HotelApp
                     borderluar.BorderBrush = Brushes.Cyan;
                 }
                 sdr.Close();
+                con.Close();
             }
             catch(Exception ex)
             {

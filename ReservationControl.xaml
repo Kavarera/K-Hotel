@@ -27,9 +27,9 @@
                     Cursor="Hand"/>
             </StackPanel>
 
-           
-            
-            
+
+
+
             <Grid x:Name="addRoom_grid" Grid.Row="1" >
 
                 <Grid.RowDefinitions>
@@ -59,14 +59,15 @@
                                Margin="0,35,0,0"/>
 
                         <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
-                                 Margin="80,38,0,0"/>
+                                 Margin="80,38,0,0" PreviewTextInput="labelNIK_PreviewTextInput"/>
 
                         <Label Content="Phone" Foreground="White" Width="45" Height="25"
                                VerticalAlignment="Top" HorizontalAlignment="Left"
                                Margin="0,60,0,0"/>
 
                         <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
-                                 Margin="80,65,0,0"/>
+                                 Margin="80,65,0,0"
+                                 PreviewTextInput="labelPhone_PreviewTextInput"/>
 
 
                         <Label Content="Email" Foreground="White" Width="45" Height="25"
@@ -93,7 +94,7 @@
 
 
                     <!--Room info-->
-                    
+
                     <Grid Grid.Column="1" Height="120" VerticalAlignment="Top">
 
                         <Label Content="Start Date" Margin="0,3,0,0" Width="63" Foreground="White" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -106,8 +107,9 @@
                                Margin="0,35,0,0"/>
                         <TextBox x:Name="tb_nights"
                                  Width="40" BorderThickness="0" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                 Margin="80,40,0,0"/>
-                        
+                                 Margin="80,40,0,0"
+                                 PreviewTextInput="tb_nights_PreviewTextInput"/>
+
 
                         <Label Content="Room Type" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"
                                Margin="0,70,0,0" Width="70" Height="28"/>
@@ -143,7 +145,7 @@
                         <DataGrid x:Name="dg_AddRoom"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
                                   IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"
                                   Height="250" VerticalAlignment="Top" Margin="0,40,0,0"
-                                  CurrentCellChanged="dg_AddRoom_CurrentCellChanged" />
+                                  SelectedCellsChanged="dg_AddRoom_CurrentCellChanged"/>
                     </Grid>
 
                     <Canvas Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
@@ -162,9 +164,17 @@
                     </Canvas>
                     <Canvas Grid.Column="1" Grid.Row="0">
 
-                        <Label Content="Employee Info" Foreground="White" Canvas.Right="1" />
+                        <Label Content="More Items" Foreground="White" Canvas.Left="1" />
+                        <ComboBox Name="cb_moreitem1" Width="200px" Canvas.Left="21" Canvas.Top="35"/>
+                        <ComboBox Name="cb_moreitem2" Width="200px" Canvas.Left="21" Canvas.Top="70"/>
+                        <TextBox x:Name="tb_moreitem1" Width="50px" Canvas.Left="250" Canvas.Top="35"
+                                 PreviewTextInput="tb_moreitem1_PreviewTextInput" TextChanged="tb_moreitem1_TextChanged"/>
+                        
+                        <TextBox x:Name="tb_moreitem2" Width="50px" Canvas.Left="250" Canvas.Top="70"
+                                 PreviewTextInput="tb_moreitem2_PreviewTextInput" TextChanged="tb_moreitem2_TextChanged"/>
 
-                        <Label Name="lbl_EmployeeInfo_Name" Content="Name" Foreground="White" Canvas.Top="40" FontSize="25" Canvas.Right="1"/>
+
+
 
 
 
@@ -174,7 +184,7 @@
 
 
                         <Label Content="Total Price : Rp " Foreground="White" Canvas.Top="60" FontSize="20"/>
-                        <Label Content="999999" Foreground="White" Canvas.Top="60" Canvas.Left="145" FontSize="20"/>
+                        <Label Name="lbl_price" Content="0" Foreground="White" Canvas.Top="60" Canvas.Left="145" FontSize="20"/>
 
 
                         <Label Content="Code" Foreground="White" Canvas.Top="123" FontSize="20"/>
@@ -214,9 +224,9 @@
 
 
             </Grid>
-            
-            
-            
+
+
+
         </Grid>
     </Grid>
 
