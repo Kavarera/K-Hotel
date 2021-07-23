@@ -17,10 +17,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" Grid.Row="0">
-                <Button x:Name="btn_addRoom" Content="Add Room" Padding="15,0,15,0" 
-                    Background="Transparent" Foreground="White"
-                    BorderThickness="0.4" 
-                    Cursor="Hand"/>
+                
                 <Button x:Name="btn_addItem" Content="Add Item" Margin="5,0,0,0" Padding="15,0,15,0" 
                     Background="Transparent" Foreground="White"
                     BorderThickness="0.4" 
@@ -52,14 +49,15 @@
                                VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0"/>
 
                         <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
-                                 Margin="80,10,0,0"/>
+                                 Margin="80,10,0,0" Name="tb_Name"/>
 
                         <Label Content="NIK" Foreground="White" Width="35" Height="25"
                                VerticalAlignment="Top" HorizontalAlignment="Left"
                                Margin="0,35,0,0"/>
 
                         <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
-                                 Margin="80,38,0,0" PreviewTextInput="labelNIK_PreviewTextInput"/>
+                                 Margin="80,38,0,0" PreviewTextInput="labelNIK_PreviewTextInput"
+                                 Name="tb_NIK"/>
 
                         <Label Content="Phone" Foreground="White" Width="45" Height="25"
                                VerticalAlignment="Top" HorizontalAlignment="Left"
@@ -67,7 +65,8 @@
 
                         <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
                                  Margin="80,65,0,0"
-                                 PreviewTextInput="labelPhone_PreviewTextInput"/>
+                                 PreviewTextInput="labelPhone_PreviewTextInput"
+                                 Name="tb_Phone"/>
 
 
                         <Label Content="Email" Foreground="White" Width="45" Height="25"
@@ -75,7 +74,8 @@
                                Margin="0,85,0,0"/>
 
                         <TextBox Width="157" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"
-                                 Margin="80,90,0,0"/>
+                                 Margin="80,90,0,0"
+                                 Name="tb_Email"/>
 
                         <Label Content="Gender" Foreground="White" Width="50" Height="25"
                                VerticalAlignment="Top" HorizontalAlignment="Left"
@@ -191,7 +191,8 @@
                         <TextBox IsReadOnly="True" Width="145" Canvas.Left="105" Canvas.Top="135" BorderThickness="0"/>
 
                         <Button Canvas.Bottom="20" Canvas.Right="10" Content="Submit"
-                                x:Name="btn_SubmitAddRoom" Background="Green" Foreground="White" Width="55" Height="20">
+                                x:Name="btn_SubmitAddRoom" Background="Green" Foreground="White" Width="55" Height="20"
+                                Click="btn_SubmitAddRoom_Click">
 
                             <Button.Resources>
                                 <Style TargetType="{x:Type Button}">

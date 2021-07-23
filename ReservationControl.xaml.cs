@@ -41,6 +41,33 @@ namespace HotelApp
 
         }
 
+        private string generateCode(string namaKar, string namaCus, int currCust, string device = "L") {
+
+            string code = namaKar.Substring(0, 1);
+            code += namaCus.Substring(0, 1);
+            for (int i = currCust.ToString().Length + code.Length; i < 6; i++) {
+                code += "0";
+            }
+            code += currCust.ToString();
+            return code.ToUpper();
+
+        }
+
+        private void addReservation(string CustomerID, string Kode) {
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand($"INSERT INTO Reservation(TanggalWaktu,EmployeeID,CustomerID,Code) VALUES('{DateTime.Now.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss")}',{Employee.ids},{CustomerID},'{Kode}');", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
         private void LoadItems()
         {
             try
@@ -120,7 +147,7 @@ namespace HotelApp
 
         private int calculateTotal()
         {
-            return RoomPrice + MoreItem1 + MoreItem2;
+            return (RoomPrice*Int32.Parse(tb_nights.Text)) + MoreItem1 + MoreItem2;
         }
 
         private void dg_AddRoom_CurrentCellChanged(object sender, EventArgs e)
@@ -234,6 +261,84 @@ namespace HotelApp
             }
         }
 
+        private void btn_SubmitAddRoom_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                int RoomID=0;
+                int id = 0;
+                con.Open();
+                SqlDataReader sdr = new SqlCommand($"SELECT ID FROM Room WHERE RoomNumber = {tb_RoomNumber_AddRoom.Text} AND RoomFloor = {tb_RoomFloors_AddRoom.Text}", con).ExecuteReader();
+                while (sdr.Read())
+                {
+                    RoomID = Int32.Parse(sdr["ID"].ToString());
+                }
+                con.Close();
+                string nik= tb_NIK.Text.Length < 1 ? "NULL": tb_NIK.Text;
+                string email = tb_Email.Text.Length < 1 ? "NULL" : tb_Email.Text;
+                string phone = tb_Phone.Text.Length < 1 ? "NULL" : tb_Phone.Text;
+
+                con.Open();
+
+            MessageBox.Show(nik + email + phone + cb_Gender.Text[0]);
+            SqlCommand cmd = new SqlCommand($"INSERT INTO Customer(Nama, NIK, Email, Gender, PhoneNumber, RoomID) VALUES('{tb_Name.Text}', '{nik}', {email}, '{cb_Gender.Text[0]}', '{phone}', {RoomID.ToString()})", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                //Search ID
+                con.Open();
+                sdr = new SqlCommand($"SELECT MAX(ID) AS ID From Customer", con).ExecuteReader();
+                while (sdr.Read())
+                {
+                    id = Int32.Parse(sdr["ID"].ToString());
+                }
+                con.Close();
+
+                //add to Reservation database
+
+                addReservation(id.ToString(), generateCode(Employee.Nama, tb_Name.Text, id));
+
+                //add it to ReservationRoom
+                addReservationRoom(RoomID, id);
+
+                MessageBox.Show("Added");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+               con.Close();
+            }
+        }
+
+        private void addReservationRoom(int roomID, int CustomerID)
+        {
+            int reservationID = 0;
+            try
+            {
+                con.Open();
+
+                SqlDataReader sdr = new SqlCommand($"SELECT ID FROM Reservation WHERE CustomerID = {CustomerID} ", con).ExecuteReader();
+                while (sdr.Read())
+                {
+                    reservationID = Int32.Parse(sdr["ID"].ToString());
+                }
+                con.Close();
+                con.Open();
+                //check in date time started here
+                SqlCommand cmd = new SqlCommand($"INSERT INTO ReservationRoom(ReservationID, RoomID, StartDate, DurationNights, RoomPrice, CheckInDateTime, CheckOutDateTime) VALUES({reservationID}, {roomID}, '{DateTime.Now.ToString("yyyy'-'MM'-'dd")}'" +
+                    $", {tb_nights.Text}, {lbl_price.Content}, '{DateTime.Now.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss")}', '{DateTime.Now.AddDays(Convert.ToDouble(Int32.Parse(tb_nights.Text)))}')", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
         private void tb_moreitem2_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^1-9]+");
@@ -247,6 +352,8 @@ namespace HotelApp
             Regex regex = new Regex("[^1-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+
         
     }
 }
