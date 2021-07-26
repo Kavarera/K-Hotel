@@ -23,6 +23,7 @@ namespace HotelApp
 
         double mpWidth;
         ReservationControl RC = new ReservationControl();
+        CheckOutUControl COUC = new CheckOutUControl();
 
         public Beranda(MainWindow mw)
         {
@@ -51,15 +52,17 @@ namespace HotelApp
                 case "Front Office":
                     button1.Content = "Reservation";
                     button2.Content = "Check In";
-                    button3.Content = "Request Additional Items";
-                    button3.FontSize = 7;
-                    button4.Content = "Check Out";
-                    button5.Content = "Master Room Type";
+                    //i disable request addiotnal items
+                    //button3.Content = "Request Additional Items";
+                    //button3.FontSize = 7;
+                    button3.Content = "Check Out";
+                    button4.Content = "Master Room Type";
+                    button4.FontSize = 7;
+                    button5.Content = "Master Room";
                     button5.FontSize = 7;
-                    button6.Content = "Master Room";
                     button6.FontSize = 7;
-                    button7.FontSize = 7;
-                    button7.Content = "Master Item";
+                    button6.Content = "Master Item";
+                    button7.Visibility = Visibility.Collapsed;
                     break;
 
                 case "Housekeeper - Supervisor":
@@ -164,25 +167,14 @@ namespace HotelApp
         {
 
 
-            Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(50, 200, TimeSpan.FromSeconds(1)));
-            if (button1.Content.ToString()=="Reservation")
-            {
-                
-            }
-
-
+            Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(50, 200, TimeSpan.FromSeconds(0.5)));
+            
         }
+
 
         private void tg_btn_ham_Unchecked(object sender, RoutedEventArgs e)
         {
-            Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(200, 50, TimeSpan.FromSeconds(1)));
-
-            if (button1.Content.ToString() == "Reservation")
-            {
-                //RC.BeginAnimation(WidthProperty, new DoubleAnimation(RC.Width, BerandaWindow.Width - 50, TimeSpan.FromSeconds(1)));
-                
-            }
-
+            Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(200, 50, TimeSpan.FromSeconds(0.5)));
 
         }
         
@@ -198,15 +190,15 @@ namespace HotelApp
         private void button1_Click(object sender, RoutedEventArgs e)
         {
 
-            if (button1.Content.ToString() == "Reservation")
+            if(lbl_JobName.Content == "Front Office")
             {
-                if(btn1)
+                if (btn1)
                 {
                     MainPanel.Children.Remove(RC);
                     RC.cb_ClearRoomType();
                     //MainPanel.Children.Remove(RC);
                     btn1 = false;
-                    
+
                 }
                 else
                 {
@@ -216,6 +208,32 @@ namespace HotelApp
                 }
             }
 
+        }
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            if(lbl_JobName.Content=="Front Office")
+            {
+
+                MessageBox.Show("This feature is unavailable until the mobile app is out","Feature didn't exist YET!!!");
+            }
+        }
+
+        bool btn3 = false;
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            if(lbl_JobName.Content=="Front Office")
+            {
+                if (btn3)
+                {
+                    MainPanel.Children.Remove(COUC);
+                    btn3 = false;
+                }
+                else
+                {
+                    MainPanel.Children.Add(COUC);
+                    btn3 = true;
+                }
+            }
         }
     }
 }

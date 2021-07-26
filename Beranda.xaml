@@ -16,6 +16,9 @@
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
+
+
+        
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
@@ -61,6 +64,7 @@
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
+
                             <!--<EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -221,9 +225,20 @@
 
                             <ToggleButton x:Name="tg_btn_ham" Grid.Row="0" Width="50" Height="50"
                                   BorderThickness="0" HorizontalAlignment="Right" Checked="tg_btn_ham_Checked" Unchecked="tg_btn_ham_Unchecked">
-                                <ToggleButton.LayoutTransform>
+
+                                <!--<ToggleButton.Triggers>
+                                    <EventTrigger RoutedEvent="ToggleButton.Click">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="tg_btn_ham" Storyboard.TargetProperty="(ToggleButton.Opacity)"
+                                                                 From="1" To="0" Duration="0:0:0.5" AutoReverse="True"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </ToggleButton.Triggers>-->
+                                <!--<ToggleButton.LayoutTransform>
                                     <RotateTransform x:Name="tgHamRotate" Angle="0"/>
-                                </ToggleButton.LayoutTransform>
+                                </ToggleButton.LayoutTransform>-->
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="Assets/hamburger-btn-64.png" Stretch="Fill">
                                     </ImageBrush>
@@ -245,6 +260,7 @@
                                                             <Setter Property="BorderBrush" Value="Transparent"/>
                                                         </Trigger>
 
+                                                        
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
@@ -272,7 +288,7 @@
                                     <StackPanel Orientation="Horizontal" Width="150">
                                         <Button x:Name="button2" Content="Button" Margin="45,0,-20,0"
                                     FontSize="15" FontFamily="Arial"
-                                    Width="120" Height="30" Padding="3" Foreground="White" Style="{DynamicResource allbutton}" Background="Transparent"/>
+                                    Width="120" Height="30" Padding="3" Foreground="White" Style="{DynamicResource allbutton}" Background="Transparent" Click="button2_Click"/>
                                     </StackPanel>
 
                                 </ListViewItem>
@@ -280,7 +296,7 @@
                                 <ListViewItem HorizontalAlignment="Left" Margin="0,10,0,0" Style="{DynamicResource ListViewItemStyle11}">
                                     <StackPanel Orientation="Horizontal" Width="150">
                                         <Button x:Name="button3" Content="Button" Margin="45,0,-20,0"
-                                    FontSize="15" FontFamily="Arial"
+                                    FontSize="15" FontFamily="Arial" Click="button3_Click"
                                     Width="120" Height="30" Padding="3" Foreground="White" Style="{DynamicResource allbutton}" Background="Transparent"/>
                                     </StackPanel>
 

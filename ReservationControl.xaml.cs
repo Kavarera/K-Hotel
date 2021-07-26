@@ -327,7 +327,7 @@ namespace HotelApp
                 con.Open();
                 //check in date time started here
                 SqlCommand cmd = new SqlCommand($"INSERT INTO ReservationRoom(ReservationID, RoomID, StartDate, DurationNights, RoomPrice, CheckInDateTime, CheckOutDateTime) VALUES({reservationID}, {roomID}, '{DateTime.Now.ToString("yyyy'-'MM'-'dd")}'" +
-                    $", {tb_nights.Text}, {lbl_price.Content}, '{DateTime.Now.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss")}', '{DateTime.Now.AddDays(Convert.ToDouble(Int32.Parse(tb_nights.Text)))}')", con);
+                    $", {tb_nights.Text}, {lbl_price.Content}, '{DateTime.Now.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss")}', '{DateTime.Now.AddDays(Convert.ToDouble(Int32.Parse(tb_nights.Text))).ToString("yyyy'-'MM'-'dd'" + "12:00:00")}')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
