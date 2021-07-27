@@ -22,8 +22,6 @@ namespace HotelApp
     {
 
         double mpWidth;
-        ReservationControl RC = new ReservationControl();
-        CheckOutUControl COUC = new CheckOutUControl();
 
         public Beranda(MainWindow mw)
         {
@@ -47,7 +45,7 @@ namespace HotelApp
             var Converter = new System.Windows.Media.BrushConverter();
 
 
-            switch (lbl_JobName.Content)
+            switch (Employee.JobName)
             {
                 case "Front Office":
                     button1.Content = "Reservation";
@@ -56,16 +54,19 @@ namespace HotelApp
                     //button3.Content = "Request Additional Items";
                     //button3.FontSize = 7;
                     button3.Content = "Check Out";
-                    button4.Content = "Master Room Type";
-                    button4.FontSize = 7;
-                    button5.Content = "Master Room";
-                    button5.FontSize = 7;
-                    button6.FontSize = 7;
-                    button6.Content = "Master Item";
+                    //button4.Content = "Master Room Type";
+                    //button4.FontSize = 7;
+                    //button4.Content = "Master Room";
+                    //button4.FontSize = 7;
+                    //button5.FontSize = 7;
+                    //button5.Content = "Master Item";
+                    button4.Visibility = Visibility.Collapsed;
+                    button5.Visibility = Visibility.Collapsed;
+                    button6.Visibility = Visibility.Collapsed;
                     button7.Visibility = Visibility.Collapsed;
                     break;
 
-                case "Housekeeper - Supervisor":
+                case "Manager":
                     button1.Content = "Add Housekeeping Schedule";
                     button1.FontSize = 7;
                     baratas.Background = (Brush)Converter.ConvertFromString("#F08CFF");
@@ -77,12 +78,6 @@ namespace HotelApp
                     button5.Visibility = Visibility.Collapsed;
                     button6.Visibility = Visibility.Collapsed;
                     button7.Visibility = Visibility.Collapsed;
-                    button2.IsEnabled = false;
-                    button3.IsEnabled = false;
-                    button4.IsEnabled = false;
-                    button5.IsEnabled = false;
-                    button6.IsEnabled = false;
-                    button7.IsEnabled = false;
                     #endregion
                     break;
                 case "Admin":
@@ -168,7 +163,7 @@ namespace HotelApp
 
 
             Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(50, 200, TimeSpan.FromSeconds(0.5)));
-            
+
         }
 
 
@@ -177,62 +172,40 @@ namespace HotelApp
             Sidebar.BeginAnimation(WidthProperty, new DoubleAnimation(200, 50, TimeSpan.FromSeconds(0.5)));
 
         }
-        
-        
+
+
 
         private void btn_exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
 
-        bool btn1= false;
-
         private void button1_Click(object sender, RoutedEventArgs e)
         {
 
-            if(lbl_JobName.Content == "Front Office")
+            if (Employee.JobName == "Front Office")
             {
-                if (btn1)
-                {
-                    MainPanel.Children.Remove(RC);
-                    RC.cb_ClearRoomType();
-                    //MainPanel.Children.Remove(RC);
-                    btn1 = false;
-
-                }
-                else
-                {
-                    MainPanel.Children.Add(RC);
-                    //MainPanel.Children.Add(RC);
-                    btn1 = true;
-                }
+                cntCtrl.Content = new ReservationControl();
+            }
+            if (Employee.JobName == "Admin")
+            {
+                cntCtrl.Content = new AdminControl();
             }
 
         }
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            if(lbl_JobName.Content=="Front Office")
+            if (Employee.JobName == "Front Office")
             {
 
-                MessageBox.Show("This feature is unavailable until the mobile app is out","Feature didn't exist YET!!!");
+                MessageBox.Show("This feature is unavailable until the mobile app is out", "Feature didn't exist YET!!!");
             }
         }
-
-        bool btn3 = false;
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            if(lbl_JobName.Content=="Front Office")
+            if (Employee.JobName == "Front Office")
             {
-                if (btn3)
-                {
-                    MainPanel.Children.Remove(COUC);
-                    btn3 = false;
-                }
-                else
-                {
-                    MainPanel.Children.Add(COUC);
-                    btn3 = true;
-                }
+                cntCtrl.Content = new CheckOutUControl();
             }
         }
     }

@@ -46,25 +46,33 @@ namespace HotelApp
                 MessageBox.Show(checkRoomStat(tb_RoomNumber.Text).ToString());
                 if (checkRoomStat(tb_RoomNumber.Text))
                 {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand($"SELECT ID FROM Room WHERE RoomNumber = {tb_RoomNumber.Text}", con);
-                    string roomid = cmd.ExecuteScalar().ToString();
-                    cmd = new SqlCommand($"SELECT ReservationID FROM ReservationRoom WHERE RoomID = {roomid}", con);
-                    string reservationid = cmd.ExecuteScalar().ToString();
-                    cmd = new SqlCommand($"SELECT CustomerID FROM Reservation WHERE ID={reservationid}", con);
-                    string customerid = cmd.ExecuteScalar().ToString();
-                    cmd = new SqlCommand($"SELECT Nama FROM Customer WHERE ID = {customerid}", con);
-                    tb_Name.Text = cmd.ExecuteScalar().ToString();
-                    cmd = new SqlCommand($"SELECT RoomTypeID FROM Room WHERE ID = {roomid}", con);
-                    cmd = new SqlCommand($"SELECT Nama FROM RoomType WHERE ID = {cmd.ExecuteScalar()}", con);
-                    tb_RoomType.Text = cmd.ExecuteScalar().ToString();
-                    SqlDataReader sdr = new SqlCommand($"SELECT CheckInDateTime , CheckOutDateTime FROM ReservationRoom WHERE ReservationID = {reservationid} AND RoomID={roomid}", con).ExecuteReader();
-                    while (sdr.Read())
+                    try
                     {
-                        tb_CheckIn.Text = sdr["CheckInDateTime"].ToString().Substring(0,10);
-                        tb_CheckOut.Text = sdr["CheckOutDateTime"].ToString().Substring(0,10);
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand($"SELECT ID FROM Room WHERE RoomNumber = {tb_RoomNumber.Text}", con);
+                        string roomid = cmd.ExecuteScalar().ToString();
+                        cmd = new SqlCommand($"SELECT ReservationID FROM ReservationRoom WHERE RoomID = {roomid}", con);
+                        string reservationid = cmd.ExecuteScalar().ToString();
+                        cmd = new SqlCommand($"SELECT CustomerID FROM Reservation WHERE ID={reservationid}", con);
+                        string customerid = cmd.ExecuteScalar().ToString();
+                        cmd = new SqlCommand($"SELECT Nama FROM Customer WHERE ID = {customerid}", con);
+                        tb_Name.Text = cmd.ExecuteScalar().ToString();
+                        cmd = new SqlCommand($"SELECT RoomTypeID FROM Room WHERE ID = {roomid}", con);
+                        cmd = new SqlCommand($"SELECT Nama FROM RoomType WHERE ID = {cmd.ExecuteScalar()}", con);
+                        tb_RoomType.Text = cmd.ExecuteScalar().ToString();
+                        SqlDataReader sdr = new SqlCommand($"SELECT CheckInDateTime , CheckOutDateTime FROM ReservationRoom WHERE ReservationID = {reservationid} AND RoomID={roomid}", con).ExecuteReader();
+                        while (sdr.Read())
+                        {
+                            tb_CheckIn.Text = sdr["CheckInDateTime"].ToString().Substring(0, 10);
+                            tb_CheckOut.Text = sdr["CheckOutDateTime"].ToString().Substring(0, 10);
+                        }
+                        con.Close();
                     }
-                    con.Close();
+                    catch(Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message, ex.Source);
+                    }
                 }
                 else
                 {

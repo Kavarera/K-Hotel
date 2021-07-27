@@ -387,9 +387,9 @@
                     <!--Main Bar-->
 
                     <Grid x:Name="MainPanel" Background="Transparent" Width="auto">
-                        
-                        
-                        
+
+                        <ContentControl x:Name="cntCtrl"/>
+
                     </Grid>
                 </StackPanel>
                 

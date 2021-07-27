@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminControl.xaml.cs">
+      <DependentUpon>AdminControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CheckOutUControl.xaml.cs">
       <DependentUpon>CheckOutUControl.xaml</DependentUpon>
     </Compile>
@@ -68,6 +71,10 @@
       <DependentUpon>ReservationControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="RoomLoader.cs" />
+    <Page Include="AdminControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Beranda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

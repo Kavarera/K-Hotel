@@ -119,3 +119,5 @@ E:\Programming\C#\HotelApp\obj\Debug\ReservationControl.baml
 E:\Programming\C#\HotelApp\obj\Debug\HotelApp.csprojAssemblyReference.cache
 E:\Programming\C#\HotelApp\obj\Debug\CheckOutUControl.g.cs
 E:\Programming\C#\HotelApp\obj\Debug\CheckOutUControl.baml
+E:\Programming\C#\HotelApp\obj\Debug\AdminControl.g.cs
+E:\Programming\C#\HotelApp\obj\Debug\AdminControl.baml
