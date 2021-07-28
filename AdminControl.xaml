@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HotelApp"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="900">
     <UserControl.Resources>
 
@@ -86,7 +87,7 @@
 
                 <StackPanel Orientation="Vertical" Grid.Column="0">
 
-                    <TextBox x:Name="tb_nama" Text="Nama" Style="{DynamicResource tb_Employee}" />
+                    <TextBox x:Name="tb_nama" Text="Nama" Style="{DynamicResource tb_Employee}" LostFocus="tb_nama_LostFocus" />
                     <TextBox x:Name="tb_username" Text="Username" Style="{DynamicResource tb_Employee}"/>
                     <PasswordBox Height="20" x:Name="pb_pwd" HorizontalAlignment="Center" Password="Password" VerticalAlignment="Center" Margin="0,15,0,0" Width="200" BorderThickness="0">
                         <PasswordBox.Resources>
@@ -141,18 +142,18 @@
                         </PasswordBox.Resources>
                     </PasswordBox>
                     <TextBox x:Name="tb_email" Text="Email" Style="{DynamicResource tb_Employee}"/>
-                    <TextBox x:Name="tb_dateofbirth" Text="Tgl Lahir" Style="{DynamicResource tb_Employee}" ToolTip="Year-Month-Date"/>
+                    <TextBox x:Name="tb_dateofbirth" Text="Tgl Lahir" Style="{DynamicResource tb_Employee}" ToolTip="Year-Month-Date" GotFocus="tb_dateofbirth_GotFocus"/>
                     <TextBox x:Name="tb_jobID" Text="Job" Style="{DynamicResource tb_Employee}"/>
                     <TextBox x:Name="tb_address" Text="Alamat" Style="{DynamicResource tb_Employee}"/>
                 </StackPanel>
 
                 <Grid Grid.Column="1">
                     <Button x:Name="btn_addOrUpdate" Content="ADD" Style="{DynamicResource allButton}" Width="105" Height="25" FontSize="18" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right"
-                            HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#9EBFFF" Foreground="White"
+                            HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#9EBFFF" Foreground="White" Click="btn_addOrUpdate_Click"
                             Margin="0,0,0,20"/>
                     <Button x:Name="btn_Delete" Content="DELETE" Style="{DynamicResource allButton}" Width="105" Height="25" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right"
                             Background="#9EBFFF" Foreground="White"
-                            Margin="0,0,0,60" />
+                            Margin="0,0,0,60" Click="btn_Delete_Click" />
                 </Grid>
                 
             </Grid>

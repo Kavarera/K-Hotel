@@ -67,27 +67,35 @@ namespace HotelApp
                             tb_CheckOut.Text = sdr["CheckOutDateTime"].ToString().Substring(0, 10);
                         }
                         con.Close();
+
+                        /* COMMAND SQL JOIN
+                         * SELECT Employee.Username AS USERNAME , Employee.Nama AS NAME , Employee.Email AS EMAIL ,
+                        Employee.Alamat AS ADDRESS, Employee.tglLahir AS 'DATE OF BIRTH',
+                        Job.jobName AS Job FROM Employee
+                        INNER JOIN Job ON Job.ID = Employee.jobId
+                        */
+
                     }
-                    catch(Exception ex)
-                    {
+catch(Exception ex)
+{
 
-                        MessageBox.Show(ex.Message, ex.Source);
-                    }
-                }
-                else
-                {
+MessageBox.Show(ex.Message, ex.Source);
+}
+}
+else
+{
 
-                    MessageBox.Show("Room number is invalid...","Wrong number");
-                }
-            }
-        }
+MessageBox.Show("Room number is invalid...","Wrong number");
+}
+}
+}
 
-        private void Submit_btn_Click(object sender, RoutedEventArgs e)
-        {
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"UPDATE Room SET RoomStatus = 'Empty' WHERE RoomNumber = {tb_RoomNumber.Text}", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
-    }
+private void Submit_btn_Click(object sender, RoutedEventArgs e)
+{
+con.Open();
+SqlCommand cmd = new SqlCommand($"UPDATE Room SET RoomStatus = 'Empty' WHERE RoomNumber = {tb_RoomNumber.Text}", con);
+cmd.ExecuteNonQuery();
+con.Close();
+}
+}
 }

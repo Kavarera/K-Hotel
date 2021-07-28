@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ACModelEmployee.cs" />
     <Compile Include="AdminControl.xaml.cs">
       <DependentUpon>AdminControl.xaml</DependentUpon>
     </Compile>
