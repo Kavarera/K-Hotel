@@ -18,7 +18,7 @@ K-Hotel is a business application designed for hotels. The app currently feature
 
 ## Installation
 
-<p>Click [here](https://www18.zippyshare.com/v/0hgyqiMs/file.html) to download the installation file.</p>
+Click [here](https://www18.zippyshare.com/v/0hgyqiMs/file.html) to download the installation file.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
